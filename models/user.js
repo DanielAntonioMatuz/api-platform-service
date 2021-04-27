@@ -4,31 +4,20 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var UserSchema = Schema({
-    /*name: String,
-    surname: String,
-    nick: String,
-    email: String,
-    password: String,
-    role: String,
-    image: String,
-    imageBackground: String,
-    description: String,
-    date: String,
-    location: String,
-    cellphone: String,
-    estado: Boolean*/
     _id: String,
     nombre: String,
     email: String,
-    estadoLicencia: String,
+    estadoPedido: String,
     act1: String,
     act2: String,
     act3: String,
     act4: String,
     vigencia: String,
-    fechaActivacion: String,
+    fechaOrden: String,
     referencia: String,
-    tipoLicencia: String
+    pedido: String,
+    user: {type: Schema.ObjectId, ref: 'User'}
+
 
 
 })

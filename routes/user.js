@@ -7,6 +7,7 @@ var api = express.Router();
 var multiparty = require('connect-multiparty');
 var path = multiparty({uploadDir: './uploads/users'});
 
+
 var multipart = require('connect-multiparty');
 var md_upload = multipart({uploadDir: './uploads/users'});
 var configMensaje = require('../services/configMensaje');
@@ -25,8 +26,11 @@ api.post('/formulario', (req, res) => {
 api.post('/login', UseController.loginUser);
 api.put('/update-user/:id', md_auth.ensureAuth, UseController.updateUser);
 api.get('/usuario/:id', UseController.get_user);
-api.post('/search', UseController.searchUser);
+api.get('/usuario-service/:id', UseController.get_userService);
+api.post('/search', md_auth.ensureAuth, UseController.searchUser);
 api.get('/usuarios', md_auth.ensureAuth, UseController.get_users);
+api.get('/usuarios-service', UseController.getUsersService);
+api.get('/top-service/:page', UseController.getPublicationsUser);
 api.put('/usuario/editar/:id', path, UseController.editar_config);
 
 
